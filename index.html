@@ -1,0 +1,513 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>WordPress Customization For Higher Education Users</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section id="overview"><!-- container section for vertical layout -->
+					<section>
+						<h2>WordPress Customizations for Higher Education Users</h2>
+						<p>Solving for a few common problems of higher education users</p>
+					</section>
+					<section data-background-iframe="https://engineering.asu.edu">
+						<div class="pure-g">
+							<div class="pure-u-1-4">
+								<img src="img/steve-work.jpg" />
+								<p style="font-size:50%">Yes, my desk is usually that clean. It's a compulsion.</p>
+							</div>
+							<div class="pure-u-1-8">&nbsp;</div>
+							<div class="pure-u-5-8">
+								<h2>Steve Ryan</h2>
+								<p>Ira A. Fulton Schools of Engineering, Arizona State University</p>
+								<p>@SteveRyan_ASU</p>
+								<p>steve.ryan@asu.edu</p>
+							</div>
+					</section>
+					<!-- <section>
+						<p>Deck uses slide.js. Instructions for navigation are here</p>
+					</section> -->
+				</section>
+				<section id="premise">
+					<h2>Meet your users</h2>
+					<div class="pure-g">
+						<div class="fragment fade-up pure-u-1-3">
+							<h5>Students</h5>
+							<img src ="img/students.jpg"/>
+						</div>							
+						<div class="fragment fade-up pure-u-1-3">
+							<h5>Faculty</h5>
+							<img src ="img/edna.jpg"/>
+						</div>							
+						<div class="fragment fade-up pure-u-1-3">
+							<h5>Staff</h5>
+							<img src ="img/burns-smithers.jpg">
+						</div>
+					</div><!-- end pure-grid -->
+					<p>Audience varies widely. Each has their own priorities.</p>
+					<!-- <aside>
+						<ul>
+							<li>Creating an optimal experience for a community of WordPress users that have varying levels of expertise is a tough task.</li>
+							<li>It's made especially harder in higher education by the fact that the community of users which require support can potentially change with each semester. </li>
+							<li>This presentation will provide a model to overcome some of those challenges by outlining how we can create a better user experience within WordPress for each type of user.</li>
+						</ul>
+					</aside> -->
+				</section>
+				<section>
+					<h2>Common Problems</h2>
+					<ul>
+						<li>User have varying levels of expertise.</li>
+						<li>Users potentially change with each semester.</li>
+						<li>But they all require a basic, baseline access point to your site.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Building an awesome user experience</h2>
+					<p>More work than you'd think.</p>
+					<p>But it's GOOD work, and not too complicated to make it happen.</p>
+				</section>
+				<section id="user-access">
+					<section>
+						<h2>The "Pages not Posts" problem</h2>
+						<p>Users often have a need to edit specific pages within a more widely used site.</p>
+					</section>
+					<section>
+						<h3>Challenge #1: Limit Access</h3>
+						<p>Default "post editing" roles within WordPress:</p>
+						<table class="role-table">
+						<thead><tr class="tableizer-firstrow"><th>Capability</th><th>Super Admin</th><th>Admin</th><th>Editor</th><th>Author</th><th>Contributor</th></tr></thead><tbody>
+						 <tr><td>edit_others_posts</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_others_posts</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_published_posts</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>publish_posts</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_published_posts</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_posts</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td></tr>
+						 <tr><td>delete_posts</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td></tr>
+						</tbody></table>
+					</section>
+					<section>
+						<h3>Challenge #1: Limit Access</h3>
+						<p>Default "page editing" roles within WordPress:</p>
+						<table class="role-table">
+						<thead><tr><th>Capability</th><th>Super Admin</th><th>Admin</th><th>Editor</th><th>Author</th><th>Contributor</th></tr></thead><tbody>
+						 <tr><td>edit_others_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_others_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_published_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>publish_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_published_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_pages</td><td>Y</td><td>Y</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						</tbody></table>
+					</section>
+					<section>
+						<h3>Solution: Define a few new User Roles</h3>
+						<p style="font-size:80%">First, eliminate all references to pages from the default editor role. Then create something like:</p>
+						<table class="role-table">
+						<thead><tr><th>Capability</th><th>Page Editor</th><th>Page Author</th><th>Page Contributor</th></tr></thead><tbody>
+						 <tr><td>edit_others_pages</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_others_pages</td><td>Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_published_pages</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>publish_pages</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>delete_published_pages</td><td>Y</td><td>Y</td><td>&nbsp;</td></tr>
+						 <tr><td>edit_pages</td><td>Y</td><td>Y</td><td>Y</td></tr>
+						 <tr><td>delete_pages</td><td>Y</td><td>Y</td><td>Y</td></tr>
+						</tbody></table>
+					</section>
+					<section>
+						<h2>Great, but...</h2>
+						<p>This creates an additional problem.</p>
+						<p class="fragment">Need to create a way to assign multiple roles to a person since new roles define
+						<strong>additional</strong> capabilities, not <strong>incremental</strong>.</p>
+					</section>
+					<section>
+						<h2>How to implement?</h2>
+						<div class="pure-g">
+							<div class="pure-u-3-8">
+								<p>Use a plugin</p>
+								<ul class="fragment">
+									<li><a href="https://wordpress.org/plugins/user-role-editor/">User Role Editor</a></li>
+									<li><a href="https://wordpress.org/plugins/members/">Members</a></li>
+									<li>Probably more...</li>				
+								</ul>
+							</div><!-- end col -->
+							<div class="pure-u-1-8">&nbsp;</div><!-- spacer col -->
+							<div class="pure-u-1-2">
+								<p>Harder / Better<span class="fragment">(?)</span></p>
+								<ol class="fragment">
+									<li>Enable <a href="https://github.com/Mahjouba91/multiple-roles">multiple roles</a> per user in admin.</li>
+									<li>Define roles in code</li>
+								</ol>
+							</div>
+						</div><!-- end col -->
+					</section>
+					<section>
+						<h2>Create a Custom User Role</h2>
+						<p>Prep work: check out a good <a href="http://www.easywebdesigntutorials.com/creating-a-custom-user-role/">tutorial</a>.</p>
+						<pre><code data-trim data-noescape>
+						/* Add a custom user role to the site */
+
+						 $new_role = add_role('page-author', 'Page Author', array(
+							'edit_other_pages' => false, // Can edit other users pages.
+							'delete_others_pages' => false, // Can delete other users pages.
+							'edit_published_pages' => true, // Can edit published pages.
+							'publish_pages' => true, // Can publish pages.
+							'delete_published_pages' => true, // Can delete published pages.
+							'edit_pages' => true, // Access to Pages and Add New (page).
+							'delete_pages' => true, // Can delete pages.
+						 ));
+						 </code></pre>
+						 <p>Include within your theme.</p>
+						 <p class="fragment">Better: build a plugin and keep it theme independent.</p>
+						 
+					</section>
+					<section>
+						<h2>Multiple Roles per User</h2>
+						<p>Two choices here.</p>
+						<ol>
+							<li>Adapt / include the code found within <a href="https://github.com/Mahjouba91/multiple-roles">Multiple Roles Per User</a> or something similar in your plugin.</li>
+							<li>Or, just use the plugin in addition to what you are building.</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Custom Post Types</h2>
+						<p>With custom post types in general, remember to:</p>
+						<ul>
+							<li>Decide if they need a different set of permissions for user access and include those definitions when creating the CPT</li>
+							<li>Or, map it to either the post or page permission structure you just created.</li>
+						</ul>
+					</section>
+
+					<!-- <section>
+						<h2>Geek Out Slide #3</h2>
+						<pre><code data-trim data-noescape>
+						/* Break apart edit_theme_options */
+
+						 
+						 </code></pre>
+						 <p>Bonus points if someone can tell me how this might be done. Anyone, anyone? :-)</p>
+					</section> -->
+
+					<section>
+						<h2>OK, what did that get me?</h2>
+						<div class="pure-g">
+							<div class="pure-u-2-5">
+								<p>Before:</p>
+								<img src="img/BeforeUserRole.png" />
+							</div>
+							<div class="pure-u-1-5">&nbsp;</div>
+							<div class="pure-u-2-5">
+								<p>After:</p>
+								<img src="img/AfterUserRole.png" />
+							</div>
+						</div><!-- end grid -->
+						<p class="fragment">But there's more work to do.</p>
+						<!-- <aside>
+							<p>Infrastructure to start to allow people to only see what you want them to see.</p>
+							<p>Reduction of admin clutter for users who really don't need it.</p>
+						</aside> --> 
+					</section>
+
+				</section><!-- end first vertical section -->
+
+				<section id="workflow">
+					<section>
+						<h2>The "Just Show Me What's Mine" Problem</h2>
+						<p>Now that you can, let's assign pages to specific people.</p>
+					</section>
+					<section>
+						<h2>Question: How do I login?</h2>
+						<h2>Question: How can I edit my page?</h2>
+						<p>Kind of a bad response...<br/>
+						<span class="fragment" style="margin-bottom:1.5em;"><em>... and the response I gave to someone yesterday.</em></p>
+
+						<div class="fragment">	
+							<ul>
+								<li>"Just go to <code>/wp-admin.php</code> and login."</li>
+								<li>From there, go to <code>/pages</code> or click the sidebar button</li>
+								<li>It's in there.<span class="fragment">.. someplace.</span><span class="fragment">.. probably.<span class="fragment">.. not seeing it?</li>
+								<li class="fragment"><em>Hmm. Nevermind, I'll just send you a link.</em></li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>Question: How do I login?</h2>
+						<p>Little things: include a link to the login screen in the design of your product.</p>
+						<ul>
+							<li class="fragment">Reduces the need to remember the "code word" for the login screen.</li>
+							<li class="fragment">Footer widget areas are great for this.</li>
+							<li class="fragment">Concerns about security?</li>
+							<li class="fragment">Check out <a href="https://wordpress.org/plugins/rename-wp-login/">Rename WP Login</a>.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Question: Where can I edit my page?</h2>
+						<p style="margin-bottom:1.5em;">Two way better conversations</p>
+						<div style="font-size:65%;" class="pure-g">
+							<div class="fragment pure-u-2-5">
+								<ol>
+									<li>Enable WordPress Toolbar</li>
+									<li>Shows Edit Page/Post button</li>
+									<img src="img/Toolbar-EditPage.png" />
+									<li>Navigate to the page, click the button</li>
+								</ol>
+							</div>
+							<div class="pure-u-1-5"></div>
+							<div class="fragment pure-u-2-5">
+								<ol>
+									<li>Style the "edit" button so you can see it.</li>
+									<pre><code data-trim data-noescape>
+										/* Default Class Name */
+										.post-edit-link {
+										   color:purple;
+										   font-size:ginormous; // not real
+										   blink:on; // kiding again
+										}
+									</code></pre>
+									<li>Navigate to the page, find the button, click the button</li>
+								</ol>
+							</div>
+						</div><!-- end columns -->
+					</section>
+					<section>
+						<h2>What your user is seeing:</h2>
+						<div class="pure-g">
+							<div class="pure-u-2-5">
+								<p>Either all pages</p>
+								<img src="img/Page_Editor_All_Pages.png"/>
+							</div>
+							<div class="pure-u-1-5"></div>
+							<div class="pure-u-2-5">
+								<p>...or no pages.</p>
+								<img src="img/Page_Contributor_No_Pages.png"/>
+							</div>
+						</div><!-- end columns -->
+						<p>Pro Tip: Use <a href="https://wordpress.org/plugins/user-switching/">User Switching</a> to check.</p>
+					</section>
+					<section>
+						<h2>Solution: Assign page authors</h2>
+						<p>Pages HAVE authors by default. They're just not displayed in a normal WordPress page template.</p>
+						<p>Can still assign page authorship either in the post editor or the admin area.</p>
+					</section>
+					<section>
+						<h2>Assign Authors, All Pages View</h2>
+						<p>Use bulk edit function to add user to a page (or a post)</p>
+						<img src="img/bulk-edit-pages.png" />
+					</section>
+					<section>
+						<h2>Assign Authors: Edit Page View</h2>
+						<p>Be sure to reveal authors meta box in screen options.</p>
+						<img src="img/EditPage_RevealAuthor.png" />
+					</section>
+					<section>
+						<h2>Allow for multiple authors per page</h2>
+						<p>Possible to do with code. But I like the<br/> "stay classy, WordPress" option:</p>
+						<div class="fragment">
+							<p><a href="https://wordpress.org/plugins/co-authors-plus">Co-Authors Plus</a> Plugin</p>
+							<img src="img/CoAuthorsPlus.png" />
+						</div>
+					</section>
+					<section>
+						<h2>Bonus: Set default meta boxes</h2>
+						<p style="font-size:60%;">Filtering for <code>default_hidden_meta_box()</code> will allow you to set the initial post/page screen to the way that you want.</p>
+						<pre><code data-trim data-noescape>
+						add_filter('default_hidden_meta_boxes','hide_meta_box',10,2);
+						function hide_meta_box($hidden, $screen) {
+						    //make sure we are dealing with the correct screen
+						    if ('page' == $screen->base) {
+						      
+						      // show mostly everything by default. No -authordiv- here.
+						      $hidden = array('postcustom', 'slugdiv', 'trackbacksdiv' );
+
+						      // default meta boxes: = array('postexcerpt','slugdiv','postcustom','trackbacksdiv', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv');
+						    }
+						    return $hidden;
+						  }
+					  </code></pre>
+					  <p>Source: <a href="https://developer.wordpress.org/reference/hooks/default_hidden_meta_boxes/#user-contributed-notes">developer.wordpress.org</a></p>
+					  <p style="font-size:60%;">Also possible to wrap this in a conditional for specific user role.</p>
+					</section>
+					<section>
+						<h2>Bonus: Add Some <a href="https://wordpress.org/plugins/codepress-admin-columns/">Admin Columns</a></h2>
+						<p>The "build it yourself" way is just plain messy.</p>
+						<p>Use a plugin.</p>
+						<img src="img/AdminColumns.png" />
+					</section>
+					<section>
+						<h2>Result: happy users editing pages.</h2>
+						<p>Finally. But you're not quite done...</p>
+					</section>
+				</section>
+				
+				<section id="human-side">
+					<section>
+						<h2>The "We're Only Human" Problem</h2>
+						<p>We live and breathe WordPress.</p>
+							<ul style="font-size:60%;">
+								<li>We know that core releases carry the names of jazz musicians.</li>
+								<li>We believe that code is poetry.</li>
+								<li>We read WP Tavern, Post Status and/or trac.wordpress.org</li>
+								<li>We either aspire to or are actively contributing to WordPress in some way.</li>
+							</ul>
+						<p class="fragment">But, these guys may not.</p>
+						<div class="pure-g fragment fade-up ">
+							<div class="pure-u-1-3">
+								<img src ="img/students.jpg"/>
+							</div>							
+							<div class="pure-u-1-3">
+								<img src ="img/edna.jpg"/>
+							</div>							
+							<div class="pure-u-1-3">
+								<img src ="img/burns-smithers.jpg">
+							</div>
+						</div><!-- end pure-grid -->
+					</section>
+					<section>
+						<h2>Making an edit in real life.</h2>
+						<p>Your users will always be juggling website editing with the "other work" that is also required.</p>
+						<div class="pure-g">
+							<div class="pure-u-1-2">
+								<ul>
+									<li>meetings</li>
+									<li>teaching</li>
+									<li>grading</li>
+									<li>writing policy</li>
+									<li>scheduling</li>
+								</ul>
+							</div>
+							<div class="pure-u-1-2">
+								<ul>
+									<li>tutoring</li>
+									<li>lab work</li>
+									<li>counseling</li>
+									<li>recruiting</li>
+									<li>event planning</li>
+								</ul>
+							</div>
+						</div><!-- end columns -->
+					</section>
+					<section>
+						<h2>How can we really make it easier?</h2>
+						<p style="font-size:80%;">Doing some of the work outlined before this point goes a LONG way.</p>
+						<p style="font-size:80%;">Prioritize the work, trust that it is GOOD work.</p>
+						<p style="margin-top:2em;" class="fragment">Then, ask "Can we make it even better?"</p>
+					</section>
+					<section>
+						<h2>An Answer: Be the solution.</h2>
+						<p>You are one of the best resources on your team.</p>
+						<p style="margin-top:2em;">Do some simple things:</p>
+						<ul>
+							<li class="fragment fade-up">Be visible. Connect with others. Value their work.</li>
+							<li class="fragment fade-up">Set office hours, but keep an open door.</li>
+							<li class="fragment fade-up">Do the work when needed, but always be teaching.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Answer: The 10-Minute Rule</h2>
+						<p>Premise: With moderate documentation and the right access, users should be able to understand how to complete most content updates in 10 minutes or less.</p>
+					</section>
+					<section>
+						<h2>Answer: Build an "unbreakable" site</h2>
+						<p>Premise: Make users aware of multiple options for understanding and undoing mistakes.</p>
+						<p>Environmental tools of the trade:</p>
+							<ul>
+								<li>Provide development or "sandbox" spaces.</li>
+								<li>Be OK with restoring from a backup.</li>
+								<li>(Backup Frequently.)</li>
+							</ul>
+					</section>
+					<section>
+						<h2>Answer: Mistakes are OK</h2>
+						<p>Use Post / Page Revisions</p>
+						<img src="img/post-revisions.png" />
+						<p style="font-size:60%">Also: Enable the meta box by default just like the author box.</p>
+					</section>
+					<section>
+						<h2>Answer: Audit Trail Plugins</h2>
+						<p>Consider letting ALL users access a log of the changes made to a site over time.</p>
+						<p>Idea isn't to be punitive, but to understand who ELSE might be working in the same space.</p>
+						<p>Examples: <a href="https://wordpress.org/plugins/stream/">Stream</a>, <a href="https://wordpress.org/plugins/simple-history/">Simple History</a></p>
+					</section>
+
+					<section>
+						<h2>Answer: Support Dashboard Widget</h2>
+						<p style="font-size:80%;">One of the easiest things you'll ever build. Very effective.</p>
+						<pre><code data-trim data-noescape>
+						add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
+ 
+						function my_custom_dashboard_widgets() {
+							global $wp_meta_boxes;
+							wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard_help');
+						}
+
+						function custom_dashboard_help() {
+							echo 'Include your support information. Include HTML in the markup.'
+							echo 'Also explain the 10 minute rule here.';
+						}
+						</code></pre>
+
+					</section>
+
+				</section>
+				<section id="conclusion">
+					<section>
+						<h2>Conclusion: Engineering Happiness</h2>
+						<blockquote>
+							<p style="font-size:80%">Our goal is to build relationships based on trust which result in happy, passionate, loyal customers and colleagues. We do this through listening to their needs and guiding them to the fullest use of the products we offer. Requirements include the right mix of compassion, writing skills, and technical knowledge to get the job done.</p>
+							<p style="font-size:60%;"><cite>-- Job description from <a href="https://automattic.com/work-with-us/happiness-engineer/">Automattic</a></cite></p>
+						</blockquote>
+					</section>
+
+					<section>
+						<h2>Be excellent to each other.</h2>
+						<img src="img/beexcellent.png" />
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+    			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// Zoom in and out with Alt+click
+        			{ src: 'plugin/zoom-js/zoom.js', async: true },
+				]
+			});
+		</script>
+	</body>
+</html>

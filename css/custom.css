@@ -1,0 +1,9 @@
+/* Custom Styles for Steve's Presentation */
+
+#user-access .role-table {
+	font-size:65%;
+	margin-top:1.5em;
+}
+
+#user-access .role-table td {text-align:center;}
+#user-access .role-table tr td:first-child { text-align:left; }
